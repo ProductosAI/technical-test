@@ -21,14 +21,12 @@ let UserController = class UserController {
     constructor(userService) {
         this.userService = userService;
     }
-    async getUser(params) {
+    async getUser(res, params) {
         const user = await this.userService.get(params);
-        if (user) {
-            return user;
+        if (!user) {
+            res.status(common_1.HttpStatus.NOT_FOUND);
         }
-        else {
-            throw new common_1.NotFoundException();
-        }
+        return user;
     }
     async createUser(query) {
         return await this.userService.set(query);
@@ -37,9 +35,10 @@ let UserController = class UserController {
 exports.UserController = UserController;
 __decorate([
     (0, common_1.Get)('user/:id'),
-    __param(0, (0, common_1.Param)()),
+    __param(0, (0, common_1.Res)({ passthrough: true })),
+    __param(1, (0, common_1.Param)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [user_get_parameters_1.UserGetParameters]),
+    __metadata("design:paramtypes", [Object, user_get_parameters_1.UserGetParameters]),
     __metadata("design:returntype", Promise)
 ], UserController.prototype, "getUser", null);
 __decorate([

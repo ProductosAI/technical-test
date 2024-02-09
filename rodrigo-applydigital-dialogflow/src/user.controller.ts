@@ -9,15 +9,12 @@ export class UserController {
     constructor(private readonly userService: UserService) {}
 
     @Get('user/:id')
-    async getUser(@Param() params: UserGetParameters): Promise<User> {
+    async getUser(@Res({ passthrough: true }) res, @Param() params: UserGetParameters): Promise<User> {
         const user: User = await this.userService.get(params);
-        if (user) {
-            return user;
-            //res.status(HttpStatus.OK).json(user).send();
-        } else {
-            throw new NotFoundException();
-            //res.status(HttpStatus.NOT_FOUND).send();
+        if (!user) {
+            res.status(HttpStatus.NOT_FOUND);
         }
+        return user;
     }
 
     @Post('user')
@@ -25,3 +22,17 @@ export class UserController {
         return await this.userService.set(query);
     }
 }
+
+/*Knowledge section
+
+@Res() res:
+-- WORKS: res.status(HttpStatus.OK).json(user).send();
+-- DOESN'T: return user;
+-- WORKS: res.status(HttpStatus.NOT_FOUND).send();
+
+@Res({ passthrough: true }) res:
+-- WORKS: throw new NotFoundException();
+-- WORKS: res.status(HttpStatus.NOT_FOUND);//.send();
+            return user;
+
+*/

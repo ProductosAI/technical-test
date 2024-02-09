@@ -5,6 +5,6 @@ import { UserSetParameters } from './domain/models/user/user-set-parameters';
 export declare class UserController {
     private readonly userService;
     constructor(userService: UserService);
-    getUser(params: UserGetParameters): Promise<User>;
+    getUser(res: any, params: UserGetParameters): Promise<User>;
     createUser(query: UserSetParameters): Promise<boolean>;
 }
