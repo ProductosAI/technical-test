@@ -26,9 +26,9 @@ export class UserController {
 /*Knowledge section
 
 @Res() res:
--- WORKS: res.status(HttpStatus.OK).json(user).send();
+-- WORKS: res.status(HttpStatus.OK).json(user).send(); (without : Promise<User>)
 -- DOESN'T: return user;
--- WORKS: res.status(HttpStatus.NOT_FOUND).send();
+-- WORKS: res.status(HttpStatus.NOT_FOUND).send(); (without : Promise<User>)
 
 @Res({ passthrough: true }) res:
 -- WORKS: throw new NotFoundException();
