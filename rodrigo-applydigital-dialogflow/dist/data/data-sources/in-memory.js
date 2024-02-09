@@ -12,28 +12,25 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ChatbotController = void 0;
+exports.InMemoryDataSource = void 0;
 const common_1 = require("@nestjs/common");
-const chatbot_service_1 = require("../services/chatbot.service");
-const chat_parameters_1 = require("../../domain/models/chat.parameters");
-let ChatbotController = class ChatbotController {
-    constructor(chatbotService) {
-        this.chatbotService = chatbotService;
+const cache_manager_1 = require("@nestjs/cache-manager");
+let InMemoryDataSource = class InMemoryDataSource {
+    constructor(cacheManager) {
+        this.cacheManager = cacheManager;
     }
-    async chat(query) {
-        return await this.chatbotService.getChatResponse(query);
+    async set(key, object, ttl) {
+        await this.cacheManager.set(key, object, ttl);
+        return Promise.resolve(true);
+    }
+    async get(key) {
+        return await this.cacheManager.get(key);
     }
 };
-exports.ChatbotController = ChatbotController;
-__decorate([
-    (0, common_1.Get)('chat'),
-    __param(0, (0, common_1.Query)()),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [chat_parameters_1.ChatParameters]),
-    __metadata("design:returntype", Promise)
-], ChatbotController.prototype, "chat", null);
-exports.ChatbotController = ChatbotController = __decorate([
-    (0, common_1.Controller)(),
-    __metadata("design:paramtypes", [chatbot_service_1.ChatbotService])
-], ChatbotController);
-//# sourceMappingURL=chatbot.controller%20copy.js.map
+exports.InMemoryDataSource = InMemoryDataSource;
+exports.InMemoryDataSource = InMemoryDataSource = __decorate([
+    (0, common_1.Injectable)(),
+    __param(0, (0, common_1.Inject)(cache_manager_1.CACHE_MANAGER)),
+    __metadata("design:paramtypes", [Object])
+], InMemoryDataSource);
+//# sourceMappingURL=in-memory.js.map

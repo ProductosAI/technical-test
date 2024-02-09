@@ -6,31 +6,27 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ChatbotModule = void 0;
+exports.DatabaseModule = void 0;
 const common_1 = require("@nestjs/common");
-const config_1 = require("@nestjs/config");
-const chatbot_1 = require("../data/interfaces/data-sources/chatbot");
-const dialogflow_1 = require("../data/data-sources/dialogflow");
-let ChatbotModule = class ChatbotModule {
+const database_1 = require("./interfaces/data-sources/database");
+const in_memory_1 = require("./data-sources/in-memory");
+let DatabaseModule = class DatabaseModule {
 };
-exports.ChatbotModule = ChatbotModule;
-exports.ChatbotModule = ChatbotModule = __decorate([
+exports.DatabaseModule = DatabaseModule;
+exports.DatabaseModule = DatabaseModule = __decorate([
     (0, common_1.Module)({
-        imports: [
-            config_1.ConfigModule.forRoot()
-        ],
         providers: [
             {
-                provide: chatbot_1.ChatbotDataSource,
-                useClass: dialogflow_1.DialogFlowDataSource,
+                provide: database_1.DatabaseDataSource,
+                useClass: in_memory_1.InMemoryDataSource,
             }
         ],
         exports: [
             {
-                provide: chatbot_1.ChatbotDataSource,
-                useClass: dialogflow_1.DialogFlowDataSource,
+                provide: database_1.DatabaseDataSource,
+                useClass: in_memory_1.InMemoryDataSource,
             },
         ],
     })
-], ChatbotModule);
-//# sourceMappingURL=ChatbotModule.js.map
+], DatabaseModule);
+//# sourceMappingURL=DatabaseModule.js.map

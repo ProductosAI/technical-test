@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.DialogFlowResult = void 0;
-class DialogFlowResult {
+exports.UserGetResult = void 0;
+class UserGetResult {
 }
-exports.DialogFlowResult = DialogFlowResult;
+exports.UserGetResult = UserGetResult;
 //# sourceMappingURL=user-get-result.js.map

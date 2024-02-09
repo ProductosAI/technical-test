@@ -6,8 +6,7 @@ import { DialogFlowDataSource } from '../data/data-sources/dialogflow';
 
 @Module({
   imports: [
-    ConfigModule.forRoot(),
-    ChatbotModule
+    ConfigModule.forRoot()
   ],
   providers: [
     {

@@ -14,24 +14,31 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserController = void 0;
 const common_1 = require("@nestjs/common");
-const user_service_1 = require("./user.service");
-const user_get_parameters_1 = require("./user-get-parameters");
+const user_service_1 = require("./application/services/user.service");
+const user_get_parameters_1 = require("./domain/models/user/user-get-parameters");
 let UserController = class UserController {
     constructor(userService) {
         this.userService = userService;
     }
-    async chat(query) {
-        return await this.userService.getUser(query);
+    async getUser(res, query) {
+        const user = await this.userService.get(query);
+        if (user) {
+            return user;
+        }
+        else {
+            res.status(common_1.HttpStatus.NOT_FOUND).send();
+        }
     }
 };
 exports.UserController = UserController;
 __decorate([
-    (0, common_1.Get)('user'),
-    __param(0, (0, common_1.Query)()),
+    (0, common_1.Get)('user/:id'),
+    __param(0, (0, common_1.Res)()),
+    __param(1, (0, common_1.Param)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [user_get_parameters_1.UserGetParameters]),
+    __metadata("design:paramtypes", [Object, user_get_parameters_1.UserGetParameters]),
     __metadata("design:returntype", Promise)
-], UserController.prototype, "chat", null);
+], UserController.prototype, "getUser", null);
 exports.UserController = UserController = __decorate([
     (0, common_1.Controller)(),
     __metadata("design:paramtypes", [user_service_1.UserService])
