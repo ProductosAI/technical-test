@@ -13,12 +13,14 @@ const app_controller_1 = require("./controllers/app.controller");
 const app_service_1 = require("./app.service");
 const chatbot_controller_1 = require("./controllers/chatbot.controller");
 const chatbot_service_1 = require("./services/chatbot.service");
-const user_controller_1 = require("../user.controller");
+const user_controller_1 = require("./controllers/user.controller");
 const ChatbotModule_1 = require("../data/ChatbotModule");
 const chat_use_case_1 = require("./useCases/chat-use-case");
 const user_service_1 = require("./services/user.service");
 const DatabaseModule_1 = require("../data/DatabaseModule");
 const user_data_source_1 = require("../data/data-sources/user/user-data-source");
+const get_user_use_case_1 = require("./useCases/get-user-use-case");
+const set_user_use_case_1 = require("./useCases/set-user-use-case");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -29,8 +31,20 @@ exports.AppModule = AppModule = __decorate([
             ChatbotModule_1.ChatbotModule,
             DatabaseModule_1.DatabaseModule
         ],
-        controllers: [app_controller_1.AppController, chatbot_controller_1.ChatbotController, user_controller_1.UserController],
-        providers: [app_service_1.AppService, chat_use_case_1.ChatUseCase, chatbot_service_1.ChatbotService, user_service_1.UserService, user_data_source_1.UserDataSource],
+        controllers: [
+            app_controller_1.AppController,
+            chatbot_controller_1.ChatbotController,
+            user_controller_1.UserController
+        ],
+        providers: [
+            app_service_1.AppService,
+            chat_use_case_1.ChatUseCase,
+            chatbot_service_1.ChatbotService,
+            user_service_1.UserService,
+            user_data_source_1.UserDataSource,
+            get_user_use_case_1.GetUserUseCase,
+            set_user_use_case_1.SetUserUseCase
+        ],
     })
 ], AppModule);
 //# sourceMappingURL=app.module.js.map

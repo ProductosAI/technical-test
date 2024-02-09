@@ -13,11 +13,11 @@ exports.ChatUseCase = void 0;
 const common_1 = require("@nestjs/common");
 const chatbot_service_1 = require("../services/chatbot.service");
 let ChatUseCase = class ChatUseCase {
-    constructor(chatbotService) {
-        this.chatbotService = chatbotService;
+    constructor(service) {
+        this.service = service;
     }
     async execute(request) {
-        return await this.chatbotService.chat(request);
+        return await this.service.chat(request);
     }
 };
 exports.ChatUseCase = ChatUseCase;
