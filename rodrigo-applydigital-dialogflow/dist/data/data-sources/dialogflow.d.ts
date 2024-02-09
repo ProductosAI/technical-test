@@ -1,9 +1,11 @@
 import { ConfigService } from '@nestjs/config';
-import { DialogFlowResult } from 'src/dialogflow-result';
-export declare class DialogFlowService {
+import { ChatbotResult } from 'src/domain/models/chatbot.result';
+import { ChatbotDataSource } from '../interfaces/data-sources/chatbot';
+import { ChatParameters } from 'src/domain/models/chat.parameters';
+export declare class DialogFlowDataSource implements ChatbotDataSource {
     private configService;
     private readonly sessionClient;
     private readonly sessionPath;
     constructor(configService: ConfigService);
-    getChatResponse(message: string): Promise<DialogFlowResult>;
+    chat(query: ChatParameters): Promise<ChatbotResult>;
 }

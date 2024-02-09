@@ -2,11 +2,13 @@ import dialogflow, { SessionsClient } from '@google-cloud/dialogflow';
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { EnvironmentVariables } from 'src/environment-variables';
-import { DialogFlowResult } from 'src/dialogflow-result';
+import { ChatbotResult } from 'src/domain/models/chatbot.result';
 import { v4 as uuid } from 'uuid';
+import { ChatbotDataSource } from '../interfaces/data-sources/chatbot';
+import { ChatParameters } from 'src/domain/models/chat.parameters';
 
 @Injectable()
-export class DialogFlowService {
+export class DialogFlowDataSource implements ChatbotDataSource {
     private readonly sessionClient: SessionsClient;
     private readonly sessionPath: string;
 
@@ -24,12 +26,12 @@ export class DialogFlowService {
         );
     }
 
-    async getChatResponse(message: string): Promise<DialogFlowResult> {
+    async chat(query: ChatParameters): Promise<ChatbotResult> {
         const request = {
             session: this.sessionPath,
             queryInput: {
                 text: {
-                    text: message,
+                    text: query.message,
                     languageCode: 'en-US'
                 },
                 languageCode: 'en-US'
@@ -37,10 +39,10 @@ export class DialogFlowService {
         };
 
         const [response] = await this.sessionClient.detectIntent(request);
-        const result: DialogFlowResult = {
+        const result: ChatbotResult = {
           result: response.queryResult?.fulfillmentText || `Sorry, I'm not ready to answer that`
         };
 
         return result;
-    };
+    }
 }

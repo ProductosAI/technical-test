@@ -9,13 +9,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.DialogFlowService = void 0;
+exports.DialogFlowDataSource = void 0;
 const dialogflow_1 = require("@google-cloud/dialogflow");
 const common_1 = require("@nestjs/common");
 const config_1 = require("@nestjs/config");
 const environment_variables_1 = require("../../environment-variables");
 const uuid_1 = require("uuid");
-let DialogFlowService = class DialogFlowService {
+let DialogFlowDataSource = class DialogFlowDataSource {
     constructor(configService) {
         this.configService = configService;
         this.sessionClient = new dialogflow_1.default.SessionsClient({
@@ -26,12 +26,12 @@ let DialogFlowService = class DialogFlowService {
         });
         this.sessionPath = this.sessionClient.projectAgentSessionPath(this.configService.get(environment_variables_1.EnvironmentVariables.GCP_DIALOGFLOW_PROJECT_ID), (0, uuid_1.v4)());
     }
-    async getChatResponse(message) {
+    async chat(query) {
         const request = {
             session: this.sessionPath,
             queryInput: {
                 text: {
-                    text: message,
+                    text: query.message,
                     languageCode: 'en-US'
                 },
                 languageCode: 'en-US'
@@ -43,11 +43,10 @@ let DialogFlowService = class DialogFlowService {
         };
         return result;
     }
-    ;
 };
-exports.DialogFlowService = DialogFlowService;
-exports.DialogFlowService = DialogFlowService = __decorate([
+exports.DialogFlowDataSource = DialogFlowDataSource;
+exports.DialogFlowDataSource = DialogFlowDataSource = __decorate([
     (0, common_1.Injectable)(),
     __metadata("design:paramtypes", [config_1.ConfigService])
-], DialogFlowService);
+], DialogFlowDataSource);
 //# sourceMappingURL=dialogflow.js.map
