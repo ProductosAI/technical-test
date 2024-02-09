@@ -10,11 +10,18 @@ exports.DatabaseModule = void 0;
 const common_1 = require("@nestjs/common");
 const database_1 = require("./interfaces/data-sources/database");
 const in_memory_1 = require("./data-sources/in-memory");
+const cache_manager_1 = require("@nestjs/cache-manager");
 let DatabaseModule = class DatabaseModule {
 };
 exports.DatabaseModule = DatabaseModule;
 exports.DatabaseModule = DatabaseModule = __decorate([
     (0, common_1.Module)({
+        imports: [
+            cache_manager_1.CacheModule.register({
+                isGlobal: true,
+                ttl: 60
+            }),
+        ],
         providers: [
             {
                 provide: database_1.DatabaseDataSource,

@@ -21,6 +21,10 @@ let UserService = class UserService {
         return result.user;
     }
     ;
+    async set(params) {
+        return await this.userDataSource.set(params);
+    }
+    ;
 };
 exports.UserService = UserService;
 exports.UserService = UserService = __decorate([

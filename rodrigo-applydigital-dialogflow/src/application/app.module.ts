@@ -15,9 +15,9 @@ import { UserDataSource } from 'src/data/data-sources/user/user-data-source';
 @Module({
     imports: [
       ConfigModule.forRoot(),
-      CacheModule.register({
-        isGlobal: true
-      }),
+      // CacheModule.register({
+      //   isGlobal: true
+      // }),
       ChatbotModule,
       DatabaseModule
     ],

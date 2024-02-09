@@ -8,10 +8,11 @@ export class InMemoryDataSource<T> implements DatabaseDataSource<T> {
     constructor(@Inject(CACHE_MANAGER) private cacheManager: Cache) {}
     
     async set(key: string, object: T, ttl?: number): Promise<boolean> {
-        await this.cacheManager.set(key, object, ttl);
-        return Promise.resolve(true);
+        await this.cacheManager.store.set(key, object, ttl || 800000);
+        return true;
     }
     async get(key: string): Promise<T> {
-        return await this.cacheManager.get<T>(key);
+        const asdads = await this.cacheManager.store.keys();
+        return await this.cacheManager.store.get<T>(key);
     }
 }

@@ -6,6 +6,6 @@ export class UserSetParameters {
 
     @IsNotEmpty()
     name: string;
-    
-    age: number;
+
+    age?: number;
 }

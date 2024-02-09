@@ -17,10 +17,20 @@ let UserDataSource = class UserDataSource {
         this.userDataSource = userDataSource;
     }
     async get(params) {
+        const user = await this.userDataSource.get(params.id);
         const result = {
-            user: await this.userDataSource.get(params.id)
+            user: user
         };
         return result;
+    }
+    ;
+    async set(params) {
+        const user = {
+            id: params.id,
+            name: params.name,
+            age: params.age
+        };
+        return await this.userDataSource.set(user.id, user);
     }
     ;
 };

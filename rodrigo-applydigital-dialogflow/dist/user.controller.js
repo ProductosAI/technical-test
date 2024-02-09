@@ -16,29 +16,39 @@ exports.UserController = void 0;
 const common_1 = require("@nestjs/common");
 const user_service_1 = require("./application/services/user.service");
 const user_get_parameters_1 = require("./domain/models/user/user-get-parameters");
+const user_set_parameters_1 = require("./domain/models/user/user-set-parameters");
 let UserController = class UserController {
     constructor(userService) {
         this.userService = userService;
     }
-    async getUser(res, query) {
-        const user = await this.userService.get(query);
+    async getUser(params) {
+        const user = await this.userService.get(params);
         if (user) {
             return user;
         }
         else {
-            res.status(common_1.HttpStatus.NOT_FOUND).send();
+            throw new common_1.NotFoundException();
         }
+    }
+    async createUser(query) {
+        return await this.userService.set(query);
     }
 };
 exports.UserController = UserController;
 __decorate([
     (0, common_1.Get)('user/:id'),
-    __param(0, (0, common_1.Res)()),
-    __param(1, (0, common_1.Param)()),
+    __param(0, (0, common_1.Param)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object, user_get_parameters_1.UserGetParameters]),
+    __metadata("design:paramtypes", [user_get_parameters_1.UserGetParameters]),
     __metadata("design:returntype", Promise)
 ], UserController.prototype, "getUser", null);
+__decorate([
+    (0, common_1.Post)('user'),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [user_set_parameters_1.UserSetParameters]),
+    __metadata("design:returntype", Promise)
+], UserController.prototype, "createUser", null);
 exports.UserController = UserController = __decorate([
     (0, common_1.Controller)(),
     __metadata("design:paramtypes", [user_service_1.UserService])

@@ -20,11 +20,12 @@ let InMemoryDataSource = class InMemoryDataSource {
         this.cacheManager = cacheManager;
     }
     async set(key, object, ttl) {
-        await this.cacheManager.set(key, object, ttl);
-        return Promise.resolve(true);
+        await this.cacheManager.store.set(key, object, ttl || 800000);
+        return true;
     }
     async get(key) {
-        return await this.cacheManager.get(key);
+        const asdads = await this.cacheManager.store.keys();
+        return await this.cacheManager.store.get(key);
     }
 };
 exports.InMemoryDataSource = InMemoryDataSource;
