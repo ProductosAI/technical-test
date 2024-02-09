@@ -12,28 +12,28 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.DialogFlowController = void 0;
+exports.UserController = void 0;
 const common_1 = require("@nestjs/common");
-const dialogflow_service_1 = require("./dialogflow.service");
-const chat_parameters_1 = require("./chat.parameters");
-let DialogFlowController = class DialogFlowController {
-    constructor(dialogFlowService) {
-        this.dialogFlowService = dialogFlowService;
+const user_service_1 = require("./user.service");
+const user_get_parameters_1 = require("./user-get-parameters");
+let UserController = class UserController {
+    constructor(userService) {
+        this.userService = userService;
     }
     async chat(query) {
-        return await this.dialogFlowService.getChatResponse(query.message);
+        return await this.userService.getUser(query);
     }
 };
-exports.DialogFlowController = DialogFlowController;
+exports.UserController = UserController;
 __decorate([
-    (0, common_1.Get)('chat'),
+    (0, common_1.Get)('user'),
     __param(0, (0, common_1.Query)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [chat_parameters_1.ChatParameters]),
+    __metadata("design:paramtypes", [user_get_parameters_1.UserGetParameters]),
     __metadata("design:returntype", Promise)
-], DialogFlowController.prototype, "chat", null);
-exports.DialogFlowController = DialogFlowController = __decorate([
+], UserController.prototype, "chat", null);
+exports.UserController = UserController = __decorate([
     (0, common_1.Controller)(),
-    __metadata("design:paramtypes", [dialogflow_service_1.DialogFlowService])
-], DialogFlowController);
-//# sourceMappingURL=dialogflow.controller.js.map
+    __metadata("design:paramtypes", [user_service_1.UserService])
+], UserController);
+//# sourceMappingURL=user.controller.js.map
