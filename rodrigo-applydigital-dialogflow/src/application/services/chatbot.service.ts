@@ -7,7 +7,7 @@ import { ChatbotDataSource } from '../../data/interfaces/data-sources/chatbot';
 export class ChatbotService {
     constructor(private chatbotDataSource: ChatbotDataSource) {}
 
-    async getChatResponse(query: ChatParameters): Promise<ChatbotResult> {
+    async chat(query: ChatParameters): Promise<ChatbotResult> {
         return this.chatbotDataSource.chat(query);
     };
 }

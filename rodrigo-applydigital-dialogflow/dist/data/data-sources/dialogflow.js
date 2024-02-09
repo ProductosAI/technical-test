@@ -13,7 +13,7 @@ exports.DialogFlowDataSource = void 0;
 const dialogflow_1 = require("@google-cloud/dialogflow");
 const common_1 = require("@nestjs/common");
 const config_1 = require("@nestjs/config");
-const environment_variables_1 = require("../../environment-variables");
+const environment_variables_1 = require("../../application/environment-variables");
 const uuid_1 = require("uuid");
 let DialogFlowDataSource = class DialogFlowDataSource {
     constructor(configService) {

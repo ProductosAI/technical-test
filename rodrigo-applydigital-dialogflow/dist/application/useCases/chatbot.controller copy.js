@@ -14,14 +14,14 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ChatbotController = void 0;
 const common_1 = require("@nestjs/common");
+const chatbot_service_1 = require("../services/chatbot.service");
 const chat_parameters_1 = require("../../domain/models/chat.parameters");
-const chat_use_case_1 = require("../useCases/chat-use-case");
 let ChatbotController = class ChatbotController {
-    constructor(chatUseCase) {
-        this.chatUseCase = chatUseCase;
+    constructor(chatbotService) {
+        this.chatbotService = chatbotService;
     }
     async chat(query) {
-        return await this.chatUseCase.execute(query);
+        return await this.chatbotService.getChatResponse(query);
     }
 };
 exports.ChatbotController = ChatbotController;
@@ -34,6 +34,6 @@ __decorate([
 ], ChatbotController.prototype, "chat", null);
 exports.ChatbotController = ChatbotController = __decorate([
     (0, common_1.Controller)(),
-    __metadata("design:paramtypes", [chat_use_case_1.ChatUseCase])
+    __metadata("design:paramtypes", [chatbot_service_1.ChatbotService])
 ], ChatbotController);
-//# sourceMappingURL=chatbot.controller.js.map
+//# sourceMappingURL=chatbot.controller%20copy.js.map

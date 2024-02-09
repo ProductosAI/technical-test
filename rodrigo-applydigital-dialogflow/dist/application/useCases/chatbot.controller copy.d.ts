@@ -1,8 +1,8 @@
+import { ChatbotService } from '../services/chatbot.service';
 import { ChatParameters } from '../../domain/models/chat.parameters';
 import { ChatbotResult } from '../../domain/models/chatbot.result';
-import { ChatUseCase } from '../useCases/chat-use-case';
 export declare class ChatbotController {
-    private readonly chatUseCase;
-    constructor(chatUseCase: ChatUseCase);
+    private readonly chatbotService;
+    constructor(chatbotService: ChatbotService);
     chat(query: ChatParameters): Promise<ChatbotResult>;
 }

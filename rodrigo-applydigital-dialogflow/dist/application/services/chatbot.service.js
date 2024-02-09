@@ -16,7 +16,7 @@ let ChatbotService = class ChatbotService {
     constructor(chatbotDataSource) {
         this.chatbotDataSource = chatbotDataSource;
     }
-    async getChatResponse(query) {
+    async chat(query) {
         return this.chatbotDataSource.chat(query);
     }
     ;

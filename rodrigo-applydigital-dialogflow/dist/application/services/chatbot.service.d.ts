@@ -4,5 +4,5 @@ import { ChatbotDataSource } from '../../data/interfaces/data-sources/chatbot';
 export declare class ChatbotService {
     private chatbotDataSource;
     constructor(chatbotDataSource: ChatbotDataSource);
-    getChatResponse(query: ChatParameters): Promise<ChatbotResult>;
+    chat(query: ChatParameters): Promise<ChatbotResult>;
 }

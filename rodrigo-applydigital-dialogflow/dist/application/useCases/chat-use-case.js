@@ -9,26 +9,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AppController = void 0;
+exports.ChatUseCase = void 0;
 const common_1 = require("@nestjs/common");
-const app_service_1 = require("../app.service");
-let AppController = class AppController {
-    constructor(appService) {
-        this.appService = appService;
+const chatbot_service_1 = require("../services/chatbot.service");
+let ChatUseCase = class ChatUseCase {
+    constructor(chatbotService) {
+        this.chatbotService = chatbotService;
     }
-    getHello() {
-        return this.appService.getHello();
+    async execute(request) {
+        return await this.chatbotService.chat(request);
     }
 };
-exports.AppController = AppController;
-__decorate([
-    (0, common_1.Get)(),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
-    __metadata("design:returntype", String)
-], AppController.prototype, "getHello", null);
-exports.AppController = AppController = __decorate([
-    (0, common_1.Controller)(),
-    __metadata("design:paramtypes", [app_service_1.AppService])
-], AppController);
-//# sourceMappingURL=app.controller.js.map
+exports.ChatUseCase = ChatUseCase;
+exports.ChatUseCase = ChatUseCase = __decorate([
+    (0, common_1.Injectable)(),
+    __metadata("design:paramtypes", [chatbot_service_1.ChatbotService])
+], ChatUseCase);
+//# sourceMappingURL=chat-use-case.js.map
