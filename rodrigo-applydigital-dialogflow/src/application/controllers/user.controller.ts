@@ -2,14 +2,14 @@ import { Body, Controller, Get, HttpStatus, Param, Post, Res } from '@nestjs/com
 import { User } from '../../domain/models/user/user';
 import { UserGetParameters } from '../../domain/models/user/user-get-parameters';
 import { UserSetParameters } from '../../domain/models/user/user-set-parameters';
-import { GetUserUseCase } from '../../domain/useCases/get-user-use-case';
-import { SetUserUseCase } from '../../domain/useCases/set-user-use-case';
+import { IGetUserUseCase } from '../../domain/interfaces/useCases/get-user-use-case';
+import { ISetUserUseCase } from '../../domain/interfaces/useCases/set-user-use-case';
 
 @Controller()
 export class UserController {
     constructor(
-        private readonly getUserUseCase: GetUserUseCase,
-        private readonly setUserUseCase: SetUserUseCase
+        private readonly getUserUseCase: IGetUserUseCase,
+        private readonly setUserUseCase: ISetUserUseCase
     ) {}
 
     @Get('user/:id')

@@ -4,9 +4,10 @@ import { User } from '../../../domain/models/user/user';
 import { UserGetResult } from '../../../domain/models/user/user-get-result';
 import { DatabaseDataSource } from '../../interfaces/data-sources/database';
 import { UserSetParameters } from '../../../domain/models/user/user-set-parameters';
+import { IUserDataSource } from 'src/data/interfaces/user/user-data-source';
 
 @Injectable()
-export class UserDataSource {
+export class UserDataSource implements IUserDataSource {
     constructor(private userDataSource: DatabaseDataSource<User>) {}
 
     async get(params: UserGetParameters): Promise<UserGetResult> {
