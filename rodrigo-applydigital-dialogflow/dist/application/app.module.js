@@ -9,8 +9,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppModule = void 0;
 const common_1 = require("@nestjs/common");
 const config_1 = require("@nestjs/config");
-const app_controller_1 = require("./controllers/app.controller");
-const app_service_1 = require("./app.service");
 const chatbot_controller_1 = require("./controllers/chatbot.controller");
 const chatbot_service_1 = require("./services/chatbot.service");
 const user_controller_1 = require("./controllers/user.controller");
@@ -32,12 +30,10 @@ exports.AppModule = AppModule = __decorate([
             DatabaseModule_1.DatabaseModule
         ],
         controllers: [
-            app_controller_1.AppController,
             chatbot_controller_1.ChatbotController,
             user_controller_1.UserController
         ],
         providers: [
-            app_service_1.AppService,
             chat_use_case_1.ChatUseCase,
             chatbot_service_1.ChatbotService,
             user_service_1.UserService,

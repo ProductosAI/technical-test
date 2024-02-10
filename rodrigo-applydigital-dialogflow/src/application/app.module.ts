@@ -1,7 +1,5 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-import { AppController } from './controllers/app.controller';
-import { AppService } from './app.service';
 import { ChatbotController } from './controllers/chatbot.controller';
 import { ChatbotService } from './services/chatbot.service';
 import { UserController } from './controllers/user.controller';
@@ -20,12 +18,10 @@ import { SetUserUseCase } from './useCases/set-user-use-case';
       DatabaseModule
     ],
     controllers: [
-      AppController,
       ChatbotController,
       UserController
     ],
     providers: [
-      AppService,
       ChatUseCase,
       ChatbotService,
       UserService,

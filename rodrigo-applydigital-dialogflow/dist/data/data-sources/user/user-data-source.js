@@ -11,7 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserDataSource = void 0;
 const common_1 = require("@nestjs/common");
-const database_1 = require("../../interfaces/data-sources/database");
+const database_1 = require("../../../data/interfaces/data-sources/database");
 let UserDataSource = class UserDataSource {
     constructor(userDataSource) {
         this.userDataSource = userDataSource;
