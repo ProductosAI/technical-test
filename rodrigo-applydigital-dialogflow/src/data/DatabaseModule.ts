@@ -9,7 +9,7 @@ import { CacheModule } from '@nestjs/cache-manager';
   imports: [
     CacheModule.register({
       isGlobal: true,
-      ttl: 60
+      ttl: 0
     }),
   ],
   providers: [

@@ -1,4 +1,4 @@
-import { IsNotEmpty } from '@nestjs/class-validator';
+import { IsNotEmpty, IsNumber } from '@nestjs/class-validator';
 
 export class UserSetParameters {
     @IsNotEmpty()
@@ -7,5 +7,6 @@ export class UserSetParameters {
     @IsNotEmpty()
     name: string;
 
+    @IsNumber()
     age?: number;
 }
