@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { ChatbotController } from './chatbot.controller';
-import { ChatbotService } from '../services/chatbot.service';
-import { ChatUseCase } from '../useCases/chat-use-case';
+import { ChatbotService } from '../../domain/services/chatbot.service';
+import { ChatUseCase } from '../../domain/useCases/chat-use-case';
 import { ChatbotDataSource } from '../../data/interfaces/data-sources/chatbot';
 import { DialogFlowDataSource } from '../../data/data-sources/dialogflow';
 import { ConfigModule } from '@nestjs/config';

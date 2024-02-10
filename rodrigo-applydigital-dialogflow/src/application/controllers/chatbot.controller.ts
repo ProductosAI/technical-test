@@ -1,7 +1,7 @@
 import { Controller, Get, Query } from '@nestjs/common';
 import { ChatParameters } from '../../domain/models/chat.parameters';
-import { ChatbotResult } from '../../domain/models/chatbot.result';
-import { ChatUseCase } from '../useCases/chat-use-case';
+import { ChatbotResult } from '../../domain/models/chatbot-result';
+import { ChatUseCase } from '../../domain/useCases/chat-use-case';
 
 @Controller()
 export class ChatbotController {

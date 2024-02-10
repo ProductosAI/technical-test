@@ -2,7 +2,7 @@ import dialogflow, { SessionsClient } from '@google-cloud/dialogflow';
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { EnvironmentVariables } from '../../application/environment-variables';
-import { ChatbotResult } from '../../domain/models/chatbot.result';
+import { ChatbotResult } from '../../domain/models/chatbot-result';
 import { v4 as uuid } from 'uuid';
 import { ChatbotDataSource } from '../interfaces/data-sources/chatbot';
 import { ChatParameters } from '../../domain/models/chat.parameters';

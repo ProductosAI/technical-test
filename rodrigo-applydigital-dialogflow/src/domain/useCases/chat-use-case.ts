@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { ChatbotService } from '../services/chatbot.service';
-import { ChatParameters } from '../../domain/models/chat.parameters';
-import { ChatbotResult } from '../../domain/models/chatbot.result';
+import { ChatParameters } from '../models/chat.parameters';
+import { ChatbotResult } from '../models/chatbot-result';
 import { UseCase } from './use-case';
 
 @Injectable()

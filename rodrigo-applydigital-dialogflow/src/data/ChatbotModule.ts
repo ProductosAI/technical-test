@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 
 import { ConfigModule } from '@nestjs/config';
-import { ChatbotDataSource } from '../data/interfaces/data-sources/chatbot';
+import { ChatbotDataSource } from './interfaces/data-sources/chatbot';
 import { DialogFlowDataSource } from '../data/data-sources/dialogflow';
 
 @Module({

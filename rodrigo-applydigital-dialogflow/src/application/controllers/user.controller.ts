@@ -2,8 +2,8 @@ import { Body, Controller, Get, HttpStatus, Param, Post, Res } from '@nestjs/com
 import { User } from '../../domain/models/user/user';
 import { UserGetParameters } from '../../domain/models/user/user-get-parameters';
 import { UserSetParameters } from '../../domain/models/user/user-set-parameters';
-import { GetUserUseCase } from '../useCases/get-user-use-case';
-import { SetUserUseCase } from '../useCases/set-user-use-case';
+import { GetUserUseCase } from '../../domain/useCases/get-user-use-case';
+import { SetUserUseCase } from '../../domain/useCases/set-user-use-case';
 
 @Controller()
 export class UserController {

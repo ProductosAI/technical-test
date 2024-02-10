@@ -1,5 +1,5 @@
 import { ChatParameters } from '../../../domain/models/chat.parameters';
-import { ChatbotResult } from '../../../domain/models/chatbot.result';
+import { ChatbotResult } from '../../../domain/models/chatbot-result';
 
 export abstract class ChatbotDataSource {
 //export interface ChatbotDataSource {
