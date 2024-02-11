@@ -39,9 +39,9 @@ export class DialogFlowDataSource implements ChatbotDataSource {
         };
 
         const [response] = await this.sessionClient.detectIntent(request);
-        const result: ChatbotResult = {
-          result: response.queryResult?.fulfillmentText || `Sorry, I'm not ready to answer that`
-        };
+        const result = new ChatbotResult(
+            response.queryResult?.fulfillmentText || `Sorry, I'm not ready to answer that`
+        );
 
         return result;
     }
