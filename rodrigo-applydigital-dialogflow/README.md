@@ -1,13 +1,12 @@
 ## Description
 
 Solution developed to complete two objectives:
-- 1: Allow clients to chat with a chatbot.  In this case, DialogFlow;
-- 2. Allow clients to store user data and retrieve them.
+- Allow clients to chat with a chatbot.  In this case, DialogFlow;
+- Allow clients to store user data and retrieve them.
 
-## Setup
+## DialogFlow Setup
 
 We need a valid DialogFlow agent and a Google Console account to use this project. To generate them, these steps should be followed:
-
 - Access https://dialogflow.cloud.google.com/;
 - Click on 'Create Agent' or 'New Agent';
 - Name it as you like;
@@ -15,12 +14,10 @@ We need a valid DialogFlow agent and a Google Console account to use this projec
 - Click on 'Create'.
 
 Next, we need to enable 'Small Talk' on out agent:
-
 - On the left menu, select 'Small Talk';
 - Enable it and click on 'Save'.
 
 Next, we need to create our Service Account on Google Cloud Console (GCP):
-
 - On the upper left menu, next to the agent's name, click on the "Settings" (gear) icon;
 - Inside 'Google Project', click on the link showing your Project ID. You will be redirected to GCP;
 - Click on 'Access project configurations';
@@ -31,7 +28,6 @@ Next, we need to create our Service Account on Google Cloud Console (GCP):
 - Click on 'Done'.
 
 Now, we need to get the file with our keys so the DialogFlow API can be used:
-
 - On the screen listing our Service Accounts, locate the one we've just created and click on the 3 dots icon on the 'Actions' column and select 'Manage keys';
 - Click on 'Add Keys'> 'Create new key', selecting JSON as Key type;
 - Click on 'Create' to download the file.
@@ -47,6 +43,12 @@ The file should look like this:
 GCP_DIALOGFLOW_PROJECT_ID = "applydigitaltestagent-abcd"
 GCP_DIALOGFLOW_PRIVATE_KEY = "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDtWtz6jAHphj9b\n/gNWyt4MRSAeXEOn6tIvQEswaWPF69z0a7YYUlnoIQ105oppUjx+pKEAVbZ+JowT\nMw7FXBpdqQlk1erL7KRvclkgGIQI1ElZfghghdvdsfbq5vMgZ5bH5eYNqWx2U/LhW\nl/ILyFo5cKTOLv4Q3n7TSJayw//BBNnZBRjv2jzOwKPK4bknUHOjKMZWaWczxT0D\n82kHHdXhAgMBAAECggEABwdD3nxcHxGzPZoEALI8bThjMTDfghfghcU/Z3\nuIkAYY3s2bBCvIPwlm9X/+Qnd4=\n-----END PRIVATE KEY-----\n"
 GCP_DIALOGFLOW_CLIENT_EMAIL = "serviceaccount@applydigitaltestagent-abcd.iam.gserviceaccount.com"
+
+## Memory handling Setup
+
+Since we don't want our server to be out of memory if lots of users are registered, I've added an environment variable that will let us configure a hard limit to how many items are stored. To do so, we just need to fill the value below with a integer value bigger or equal to 0:
+
+MAX_ITEMS_IN_MEMORY_STORAGE=10
 
 ## Installation
 

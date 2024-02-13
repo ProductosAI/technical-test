@@ -1,9 +1,10 @@
-import { Body, Controller, Get, HttpStatus, Param, Post, Res } from '@nestjs/common';
+import { Body, Controller, Get, HttpStatus, Param, Post, Res, HttpException } from '@nestjs/common';
 import { User } from '../../domain/models/user/user';
 import { UserGetParameters } from '../../domain/models/user/user-get-parameters';
 import { UserSetParameters } from '../../domain/models/user/user-set-parameters';
 import { IGetUserUseCase } from '../../domain/interfaces/useCases/get-user-use-case';
 import { ISetUserUseCase } from '../../domain/interfaces/useCases/set-user-use-case';
+import { StorageFullError } from '../../data/data-sources/models/storage-full-error';
 
 @Controller()
 export class UserController {
@@ -23,7 +24,15 @@ export class UserController {
 
     @Post('user')
     async createUser(@Body() query: UserSetParameters): Promise<boolean> {
-        return await this.setUserUseCase.execute(query);
+        try {
+            return await this.setUserUseCase.execute(query);
+        } catch (error) {
+            if (error instanceof StorageFullError) {
+                throw new HttpException('Storage is full', HttpStatus.INTERNAL_SERVER_ERROR);
+            } else {
+                throw error;
+            }
+        }
     }
 }
 
