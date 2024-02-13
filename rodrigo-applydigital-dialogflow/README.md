@@ -53,12 +53,15 @@ MAX_ITEMS_IN_MEMORY_STORAGE=10
 ## Installation
 
 ```bash
+$ cd rodrigo-applydigital-dialogflow
 $ npm install
 ```
 
 ## Running the app
 
 ```bash
+$ cd rodrigo-applydigital-dialogflow
+
 # development
 $ npm run start
 
@@ -72,26 +75,22 @@ $ npm run start:prod
 ## Test
 
 ```bash
+$ cd rodrigo-applydigital-dialogflow
+
 # unit tests
 $ npm run test
 
 # e2e tests
 $ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
 ```
 
-## Support
+## Important Notes
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+### Architecture
+I've chosed to develop the solution using Clean Architecture, DDD and SOLID, since they help us separating concerns and further scaling the aplication as needed.
+For instance, if we choose to stop using DialogFlow as chatbot vendor and switch to, say, OpenAI, it would be as simple as implementing a new data source returning the same model. Or maybe we'll start storing users in a "real" database instead of storing them in memory.
 
-## Stay in touch
+It's also much easier to test every single part of the application independently, using techniques such as mocks to execute unit testing.
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+### Memory handling
+Regarding memory handling, at first I thought I should solve it by checking the available memory and allowing a certain percentage to be used. However, it quickly became clear that this probably wasn't the best approach, since 1. querying the SO to calculate and return the available memory is not a good practice since it's a costly operation and 2. it gives basically 0 previsibility on the limit: we could handle a million records but also could handle 0. So I decided to implement a much simpler, an even naive solution, making it possible to define a hard limit on how many items can be stored.
