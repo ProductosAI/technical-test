@@ -4,6 +4,9 @@ Solution developed to complete two objectives:
 - Allow clients to chat with a chatbot.  In this case, DialogFlow;
 - Allow clients to store user data and retrieve them.
 
+### OpenAPI
+OpenAPI is available at documents/openAPI.json
+
 ## DialogFlow Setup
 
 We need a valid DialogFlow agent and a Google Console account to use this project. To generate them, these steps should be followed:
