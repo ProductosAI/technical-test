@@ -1,14 +1,14 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { ChatbotController } from '../../../src/application/controllers/chatbot.controller';
-import { ChatbotService } from '../../../src/domain/services/chatbot.service';
-import { ChatUseCase } from '../../../src/domain/useCases/chat-use-case';
-import { ChatbotDataSource } from '../../../src/data/interfaces/data-sources/chatbot';
-import { DialogFlowDataSource } from '../../../src/data/data-sources/dialogflow';
+import { ChatbotController } from '../chatbot.controller';
+import { ChatbotService } from '../../../domain/services/chatbot.service';
+import { ChatUseCase } from '../../../domain/useCases/chat-use-case';
+import { ChatbotDataSource } from '../../../data/interfaces/data-sources/chatbot';
+import { DialogFlowDataSource } from '../../../data/data-sources/dialogflow';
 import { ConfigModule } from '@nestjs/config';
-import { IChatUseCase } from '../../../src/domain/interfaces/useCases/chat-use-case';
-import { ChatParameters } from '../../../src/domain/models/chat.parameters';
-import { ChatbotResult } from '../../../src/domain/models/chatbot-result';
-import { IChatbotService } from '../../../src/domain/interfaces/services/chatbot.service';
+import { IChatUseCase } from '../../../domain/interfaces/useCases/chat-use-case';
+import { ChatParameters } from '../../../domain/models/chat.parameters';
+import { ChatbotResult } from '../../../domain/models/chatbot-result';
+import { IChatbotService } from '../../../domain/interfaces/services/chatbot.service';
 
 class MockChatUseCase implements IChatUseCase {
   execute(contact: ChatParameters): Promise<ChatbotResult> {

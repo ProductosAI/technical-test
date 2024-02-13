@@ -1,30 +1,52 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
-
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
-
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
-
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Solution developed to complete two objectives:
+- 1: Allow clients to chat with a chatbot.  In this case, DialogFlow;
+- 2. Allow clients to store user data and retrieve them.
+
+## Setup
+
+We need a valid DialogFlow agent and a Google Console account to use this project. To generate them, these steps should be followed:
+
+- Access https://dialogflow.cloud.google.com/;
+- Click on 'Create Agent' or 'New Agent';
+- Name it as you like;
+- Select 'Create a new Google Project' on 'Google Project';
+- Click on 'Create'.
+
+Next, we need to enable 'Small Talk' on out agent:
+
+- On the left menu, select 'Small Talk';
+- Enable it and click on 'Save'.
+
+Next, we need to create our Service Account on Google Cloud Console (GCP):
+
+- On the upper left menu, next to the agent's name, click on the "Settings" (gear) icon;
+- Inside 'Google Project', click on the link showing your Project ID. You will be redirected to GCP;
+- Click on 'Access project configurations';
+- On the left menu, click on 'Service accounts';
+- Click on 'Create service account';
+- Create the ID as you like;
+- On Step 2, select 'DialogFlow Client API' in the role select box;
+- Click on 'Done'.
+
+Now, we need to get the file with our keys so the DialogFlow API can be used:
+
+- On the screen listing our Service Accounts, locate the one we've just created and click on the 3 dots icon on the 'Actions' column and select 'Manage keys';
+- Click on 'Add Keys'> 'Create new key', selecting JSON as Key type;
+- Click on 'Create' to download the file.
+
+On our project's the root folder, create a file named ".env". Open it and paste the following, replacing values by the ones in the file we've just downloaded:
+
+GCP_DIALOGFLOW_PROJECT_ID = "Paste property project_id's value here"
+GCP_DIALOGFLOW_PRIVATE_KEY = "Paste property private_key's value here"
+GCP_DIALOGFLOW_CLIENT_EMAIL = "Paste property client_email's value here"
+
+The file should look like this:
+
+GCP_DIALOGFLOW_PROJECT_ID = "applydigitaltestagent-abcd"
+GCP_DIALOGFLOW_PRIVATE_KEY = "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDtWtz6jAHphj9b\n/gNWyt4MRSAeXEOn6tIvQEswaWPF69z0a7YYUlnoIQ105oppUjx+pKEAVbZ+JowT\nMw7FXBpdqQlk1erL7KRvclkgGIQI1ElZfghghdvdsfbq5vMgZ5bH5eYNqWx2U/LhW\nl/ILyFo5cKTOLv4Q3n7TSJayw//BBNnZBRjv2jzOwKPK4bknUHOjKMZWaWczxT0D\n82kHHdXhAgMBAAECggEABwdD3nxcHxGzPZoEALI8bThjMTDfghfghcU/Z3\nuIkAYY3s2bBCvIPwlm9X/+Qnd4=\n-----END PRIVATE KEY-----\n"
+GCP_DIALOGFLOW_CLIENT_EMAIL = "serviceaccount@applydigitaltestagent-abcd.iam.gserviceaccount.com"
 
 ## Installation
 
